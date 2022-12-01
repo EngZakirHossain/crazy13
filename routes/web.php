@@ -80,8 +80,16 @@ Route::group(['namespace' => 'Admin\Auth', 'prefix' => 'admin', 'as' => 'admin.'
             Route::group(['prefix' => 'member'],function(){
                 Route::get('/','MemberController@index')->name('member');
                 Route::post('/store','MemberController@store')->name('member.store');
-//                Route::post('/update/{id}','UserController@update')->name('user.update');
-                Route::get('/destroy/{id}','MemberController@destroy')->name('member.destroy');
+                Route::post('/update/{id}','MemberController@update')->name('member.update');
+                Route::post('/destroy/{id}','MemberController@destroy')->name('member.destroy');
+
+            });
+
+            //new Members add,store update in admin section
+            Route::group(['prefix' => 'media'],function(){
+                Route::get('/','MediaController@index')->name('media');
+                Route::post('/store-image','MediaController@store')->name('media.store');
+                Route::get('/destroy-image','MediaController@destroy')->name('media.destroy');
 
             });
 

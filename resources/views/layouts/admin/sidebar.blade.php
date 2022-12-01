@@ -21,10 +21,10 @@
                     </ul>
                 </li>
 
-                <li class="@yield('Members')">
+                <li class="@yield('members')">
                     <a href="#"><i data-feather="users"></i> <span> Members</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a class="@yield('members')" href="#">Add Members</a></li>
+                        <li><a class="@yield('add_members')" href="#">Add Members</a></li>
                         @if (Auth::check())
                             @if (Auth::user()->role == 2)
                                 <li><a class="@yield('all_members')" href="{{ Route('admin.member') }}">All-Members</a></li>
@@ -34,8 +34,8 @@
                     </ul>
                 </li>
 
-                <li class="@yield('social_media')">
-                    <a href="#"><i data-feather="credit-card"></i> <span>demo</span></a>
+                <li class="@yield('media')">
+                    <a href="{{ Route('admin.media') }}"><i data-feather="credit-card"></i> <span>Gallery</span></a>
                 </li>
 
             </ul>

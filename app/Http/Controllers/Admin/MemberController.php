@@ -3,15 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\VerifyUserJob;
 use App\Models\Member;
-use App\Models\User;
-use App\Notifications\NewAdminAdded;
-use App\VerifyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class MemberController extends Controller
 {
@@ -36,6 +31,7 @@ class MemberController extends Controller
             'name' => 'required',
             'email' => 'required|unique:members,email',
             'phone' => 'required',
+            'photo' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
             'designation' => 'required',
         ]);
 
@@ -67,53 +63,58 @@ class MemberController extends Controller
 
     }
 
-//    //user udpate function
-//    public function update(Request $request, $id){
-//        $request->validate([
-//            'role' => 'required',
-//            'status' => 'required',
-//        ]);
-//
-//        Member::findOrFail($id)->update([
-//            'role' => $request->role,
-//            'status' => $request->status,
-//            'edited_by' => Auth::user()->email,
-//        ]);
-//
-//        return back()->with('user_update_success', 'User Updated Successfully');
-//    }
-//
-//    //user active function
-//    public function active($id){
-//        Member::findOrFail($id)->update([
-//            'status' => '1',
-//        ]);
-//
-//        return back()->with('user_active_success', 'User Activated Successfully');
-//
-//    }
-//    //user De-active function
-//    public function deactive($id){
-//        Member::findOrFail($id)->update([
-//            'status' => '2',
-//        ]);
-//
-//        return back()->with('user_deactive_success', 'User Deactivated Successfully');
-//
-//    }
-//
+    //member update function
+    public function update(Request $request, $id){
+
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required|unique:members,email',
+            'phone' => 'required',
+            'designation' => 'required',
+            'photo' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+        ]);
+
+        $member = Member::find($id);
+
+        if($request->photo != ''){
+            $path = ('photo/members_photos/');
+
+            if ($member->photo != '' && $member->photo != null) {
+                $file_old = $path . $member->photo;
+                unlink($file_old);
+            }
+            //upload new file
+            $image = $request->file('photo');
+            $name = $request->name."_".$member->id.".".$image->getClientOriginalExtension();
+            $image->move($path, $name);
+            //for update in table
+            $member->update(['photo' => $name]);
+        }
+
+        $member->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'designation' => $request->designation,
+            'status' => $request->status,
+            'updated_by' => Auth::user()->email,
+        ]);
+        return back()->with('update_success','Member Update Successfully');
+    }
+
     //Member Delete function
     public function destroy($id){
 
         //photo unlink
         $name = Member::findOrFail($id)->photo;
         if($name != 'default.png'){
-            $old_photo_location = public_path('photo/member_photos/').$name;
+            $old_photo_location = public_path('photo/members_photos/').$name;
             unlink($old_photo_location);
         }
 
-        //user delete
-        Member::findOrFail($id)->forceDelete();
-        return response()->json(['status' => 'Deleted Success']);
+        //Member delete
+        Member::findOrFail($id)->delete();
+
+        return back()->with('delete_success', 'Member Delete Successfully');
     }
 }

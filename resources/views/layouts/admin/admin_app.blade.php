@@ -9,6 +9,7 @@
 		<title>
 			@yield('admin.title')
 		</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="{{ asset('admin_asset')}}/assets/img/favicon.png">
@@ -31,9 +32,10 @@
 		<link rel="stylesheet" href="{{ asset('admin_asset')}}/assets/plugins/datatables/datatables.min.css">
 
 		<!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
+			<script src="{{ asset('admin_asset')}}/assets/js/html5shiv.min.js"></script>
+			<script src="{{ asset('admin_asset')}}/assets/js/respond.min.js"></script>
 		<![endif]-->
+
     </head>
     <body>
 
@@ -77,48 +79,6 @@
 
 				<!-- Header Menu -->
 				<ul class="nav user-menu">
-
-
-					<!-- Notifications -->
-					 <li class="nav-item dropdown">
-						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<i data-feather="bell"></i> <span class="badge badge-pill">{{ Auth::user()->unreadNotifications()->count() }}</span>
-						</a>
-						<div class="dropdown-menu notifications">
-							<div class="topnav-dropdown-header">
-								<span class="notification-title">Notifications</span>
-								<a href="javascript:void(0)" class="clear-noti"> Clear All</a>
-							</div>
-							<div class="noti-content">
-								<ul class="notification-list">
-
-									@forelse (Auth::user()->unreadNotifications as $notification )
-									<li class="notification-message">
-										<a href="activities.html">
-											<div class="media">
-												<span class="avatar avatar-sm">
-													<img class="avatar-img rounded-circle" alt="" src="assets/img/profiles/avatar-02.jpg">
-												</span>
-												<div class="media-body">
-													<p class="noti-details"><span class="noti-title">{{ $notification->data['user_name'] }}</span> {{ $notification->data['details'] }}<span class="noti-title"></span></p>
-
-												</div>
-											</div>
-										</a>
-									</li>
-									@empty
-										<span style="padding:20px;"></span>	No Notifications Found
-									@endforelse
-
-								</ul>
-							</div>
-							<div class="topnav-dropdown-footer">
-								<a href="activities.html">View all Notifications</a>
-							</div>
-						</div>
-					</li>
-					<!-- /Notifications -->
-
 					<!-- User Menu -->
 					<li class="nav-item dropdown has-arrow main-drop">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -155,8 +115,8 @@
 
 
 			        </div>
-					<!-- /Main Wrapper -->
 
+					<!-- /Main Wrapper -->
 					<!-- jQuery -->
 					<script src="{{ asset('admin_asset')}}/assets/js/jquery-3.5.1.min.js"></script>
 

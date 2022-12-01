@@ -9,9 +9,6 @@ All Users
 	active
 @endsection
 @section('admin.content')
-
-
-
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 	<div class="content container-fluid">
@@ -423,6 +420,7 @@ All Users
 	</div>
 </div>
 <!-- /Page Wrapper -->
+@endsection
 @section('admin.scripts')
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -478,4 +476,4 @@ All Users
 
 </script>
 @endsection
-@endsection
+
