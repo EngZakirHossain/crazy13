@@ -68,11 +68,11 @@
                             <li class="menu-item-has-children @yield('home')">
                                 <a href="{{route('frontend.home')}}">Home </a>
                             </li>
-                            <li class="menu-item-has-children">
+                            <li class="menu-item-has-children @yield('weMourn')">
                                 <a href="{{route('frontend.weMourn')}}">We Mourn</a>
                             </li>
-                            <li><a href="{{route('frontend.about')}}">About 13</a></li>
-                            <li><a href="{{route('frontend.rollNo')}}">Roll no.</a></li>
+                            <li class="menu-item-has-children @yield('about')"><a href="{{route('frontend.about')}}">About 13</a></li>
+                            <li class="menu-item-has-children @yield('rollNo')"><a href="{{route('frontend.rollNo')}}">Roll No</a></li>
                             <li class="menu-item-has-children @yield('memory')"><a href="{{route('frontend.memory')}}">Memory</a></li>
                         </ul>
                     </div>

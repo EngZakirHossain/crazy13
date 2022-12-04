@@ -11,27 +11,13 @@
             <div class="d-flex justify-content-center">
                 <div class="col-xl-10" id="moving-player">
                     <div class="row">
-                        <div class="col-sm-8 col-md-9 col-lg-8">
+                        <div class="col-sm-12 col-md-9 col-lg-12">
                             <div class="latest-album-left">
                                 <div class="cover-img">
-                                    <img src="{{ asset('frontend_asset/assets/photo') }}/media/album/cover.jpg" alt="">
                                 </div>
                                 <div class="albun-details">
-                                    <h6>[ Full Name]</h6>
                                     <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>
-                                    <h6>1965 - [DOB]</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-md-9 col-lg-8">
-                            <div class="latest-album-left">
-                                <div class="cover-img">
-                                    <img src="{{ asset('frontend_asset/assets/photo') }}/media/album/cover.jpg" alt="">
-                                </div>
-                                <div class="albun-details">
-                                    <h6>[ Full Name]</h6>
                                     <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>
-                                    <h6>1965 - [DOB]</h6>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +25,7 @@
                         <div class="col-xl-12">
                             <div class="record-player">
                                 <div class="player-main">
-                                    <img src="{{ asset('frontend_asset/assets/photo') }}/media/background/wemourn.png" alt="">
+                                    <img src="{{ asset('frontend_asset/assets/photo') }}/media/background/record.png" alt="">
                                 </div>
 
                             </div>

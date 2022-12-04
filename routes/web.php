@@ -29,6 +29,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'],function(){
     Route::get('/weMourn','HomeController@weMourn')->name('weMourn');
     Route::get('/rollNo','HomeController@rollNo')->name('rollNo');
     Route::get('/memory','HomeController@memory')->name('memory');
+    Route::get('/rollNo/details/{id}','HomeController@rollNoDetails')->name('rollNoDetails');
 
 
 

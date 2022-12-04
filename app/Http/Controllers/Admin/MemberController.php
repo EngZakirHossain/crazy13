@@ -30,6 +30,7 @@ class MemberController extends Controller
         //validation rule
         $request->validate([
             'name' => 'required',
+            'live' => 'required',
             'email' => 'required|unique:members,email',
             'phone' => 'required',
             'photo' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
@@ -42,6 +43,7 @@ class MemberController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'live' => $request->live,
             'designation' => $request->designation,
             'status' => $request->status,
             'added_by' => Auth::user()->email,
@@ -71,6 +73,7 @@ class MemberController extends Controller
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
+            'live' => 'required',
             'designation' => 'required',
             'photo' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ]);
@@ -98,6 +101,7 @@ class MemberController extends Controller
             'phone' => $request->phone,
             'designation' => $request->designation,
             'status' => $request->status,
+            'live' => $request->live,
             'updated_by' => Auth::user()->email,
         ]);
         return back()->with('update_success','Member Update Successfully');

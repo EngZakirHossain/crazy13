@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('designation');
             $table->string('photo')->default('default_avator.png');
             $table->string('status')->nullable();
+            $table->string('live')->nullable();
             $table->string('added_by')->nullable();
             $table->timestamp('edited_by')->nullable();
             $table->timestamps();

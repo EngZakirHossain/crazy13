@@ -7,13 +7,13 @@
 <!--==============================-->
 <section class="three-d-album">
     <div class="section-title style-four">
-        <h2>TRENDING ALBUMS</h2>
+        <h2>ফিরে দেখা </h2>
         <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some injected humour.</p>
     </div>
     <div class="more-album">
 
 
-        <a href="{{route('frontend.memory')}}">SEE ALL ALBUMS<i class="fa fa-play" aria-hidden="true"></i></a>
+        <a href="{{route('frontend.memory')}}">SEE ALL <i class="fa fa-play" aria-hidden="true"></i></a>
 
     </div>
     <div class="three-d-album-width">

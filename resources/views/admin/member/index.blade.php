@@ -76,7 +76,7 @@ All Members
 														<input class="form-control" type="file" name="photo" value="{{ old('photo') }}">
 													</div>
 													<div class="form-group">
-														<label for="">Status</label>
+														<label for="">About Me</label>
 														<textarea class="form-control" name="status">
 
 														</textarea>
@@ -84,8 +84,17 @@ All Members
 														<span class="text-danger">{{ $message }}</span>
 														@enderror
 													</div>
-
-
+                                                    <div class="form-group">
+                                                        <label for="">Status</label>
+                                                        <select class="form-control" name="live">
+                                                            <option value="">--Select status--</option>
+                                                            <option value="1">With Us</option>
+                                                            <option value="2">Passed Way</option>
+                                                        </select>
+                                                        @error ('live')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
 
 											</div>
 										</div>
@@ -251,6 +260,26 @@ All Members
                                                                             <span class="text-danger">{{ $message }}</span>
                                                                             @enderror
                                                                         </div>
+                                                                        <div class="form-group">
+                                                                            <label class="float-left" for="">Status</label>
+
+                                                                            <select class="form-control" name="live">
+                                                                                <option value="">--Select Status--</option>
+                                                                                <option @if ($member->live == 1)
+                                                                                            {{ 'selected' }}
+                                                                                        @endif
+                                                                                        value="1">With Us</option>
+                                                                                <option @if ($member->live == 2)
+                                                                                            {{ 'selected' }}
+                                                                                        @endif
+                                                                                        value="2">Passed Way</option>
+
+
+                                                                                @error ('status')
+                                                                                <span class="text-danger">{{ $message }}</span>
+                                                                                @enderror
+                                                                            </select>
+                                                                        </div>
                                                                 </div>
                                                             </div>
 
@@ -259,7 +288,7 @@ All Members
 
                                                     <div class="modal-footer">
                                                         <button class="btn-sm btn-danger" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button class="btn-primary btn-sm" type="submit">Add User</button>
+                                                        <button class="btn-primary btn-sm" type="submit">Add Member</button>
                                                         </form>
                                                     </div>
                                                 </div>

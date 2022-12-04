@@ -14,12 +14,6 @@
                 <h2>& Gallery</h2>
             </div>
 
-            <div class="breadcrumbs">
-                <a href="{{route('frontend.home')}}">Home</a>
-                <span>/</span>
-                <span>Gallery</span>
-            </div>
-
         </div>
         <!-- /.tim-container -->
     </section>

@@ -19,13 +19,18 @@ class HomeController extends Controller
         return view('frontend.pages.about');
     }
     public function weMourn(){
-
-        return view('frontend.pages.weMourn');
+        $passedMembers = \App\Models\Member::where('live',2)->get();
+        return view('frontend.pages.weMourn',compact('passedMembers'));
     }
     public function rollNo(){
-
-        return view('frontend.pages.rollNo');
+        $members = \App\Models\Member::all();
+        return view('frontend.pages.rollNo',compact('members'));
     }
+    public function rollNoDetails($id){
+        $rollNoDetails = \App\Models\Member::findorFail($id);
+        return view('frontend.pages.rollNoDetails',compact('rollNoDetails'));
+    }
+
     public function memory(){
 
         $photos = \App\Models\Gallery::all();
