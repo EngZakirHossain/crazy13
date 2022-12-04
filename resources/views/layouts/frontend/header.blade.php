@@ -41,7 +41,9 @@
 
 <body id="home-version-1" class="home-version-1" data-style="default">
 
-<div class="loader loader-bar-ping-pong is-active"></div>
+{{--//lazy loader--}}
+{{--<div class="loader loader-bar-ping-pong is-active"></div>--}}
+
 <div id="site">
 
     <!--=========================-->
@@ -52,28 +54,26 @@
             <div class="tim-container clearfix">
                 <div class="header-magic-line-inner clearfix">
                     <div id="site-logo" class="float-left">
-                        <a href="index.html" class="logo-main">
+                        <a href="{{route('frontend.home')}}" class="logo-main">
                             <img src="{{ asset('frontend_asset') }}/assets/img/logo_5.png" alt="logo">
                         </a>
 
-                        <a href="index.html" class="logo-stickky">
+                        <a href="{{route('frontend.home')}}" class="logo-stickky">
                             <img src="{{ asset('frontend_asset') }}/assets/img/logo_5.png" alt="logo">
                         </a>
                     </div>
 
-
-
                     <div class="nav">
                         <ul class="group" id="header-menu-magic-line">
-                            <li class="menu-item-has-children current_page_item">
-                                <a href="index.html">Home </a>
+                            <li class="menu-item-has-children @yield('home')">
+                                <a href="{{route('frontend.home')}}">Home </a>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="javascript:void(0);">We Mourn</a>
+                                <a href="{{route('frontend.weMourn')}}">We Mourn</a>
                             </li>
-                            <li><a href="javascript:void(0);">About 13</a></li>
-                            <li><a href="javascript:void(0);">Roll no.</a></li>
-                            <li><a href="javascript:void(0);">Memory</a></li>
+                            <li><a href="{{route('frontend.about')}}">About 13</a></li>
+                            <li><a href="{{route('frontend.rollNo')}}">Roll no.</a></li>
+                            <li class="menu-item-has-children @yield('memory')"><a href="{{route('frontend.memory')}}">Memory</a></li>
                         </ul>
                     </div>
                     <!-- /.nav -->
@@ -132,10 +132,8 @@
     <header id="mobile-nav-wrap">
         <div class="mob-header-inner d-flex justify-content-between">
             <div id="mobile-logo" class="d-flex justify-content-start">
-                <a href="index.html"><img src="{{ asset('frontend_asset') }}/assets/img/logo.png" alt="Site Logo"></a>
+                <a href="{{route('frontend.home')}}"><img src="{{ asset('frontend_asset') }}/assets/img/logo.png" alt="Site Logo"></a>
             </div>
-
-
 
             <div id="nav-toggle" class="nav-toggle hidden-md">
                 <div class="toggle-inner">
@@ -155,7 +153,7 @@
         <div class="mobile-nav-top-wrap">
             <div class="mob-header-inner clearfix">
                 <div class="d-flex justify-content-start mobile-logo">
-                    <a href="index.html">
+                    <a href="{{route('frontend.home')}}">
                         <img src="{{ asset('frontend_asset') }}/assets/img/logo.png" alt="Site Logo">
                     </a>
                 </div>
@@ -177,11 +175,11 @@
         <nav id="accordian">
             <ul class="accordion-menu">
                 <li>
-                    <a href="index.html" class="dropdownlink">Home</a>
+                    <a href="{{route('frontend.home')}}" class="dropdownlink">Home</a>
                 </li>
-                <li><a href="javascript:void(0);">About 13</a></li>
-                <li><a href="javascript:void(0);">Roll no.</a></li>
-                <li><a href="javascript:void(0);">Memory</a></li>
+                <li><a href="{{route('frontend.about')}}">About 13</a></li>
+                <li><a href="{{route('frontend.rollNo')}}">Roll no.</a></li>
+                <li><a href="{{route('frontend.memory')}}">Memory</a></li>
             </ul>
         </nav>
     </div>

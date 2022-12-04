@@ -7,6 +7,7 @@ use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use File;
 
 class MemberController extends Controller
 {
@@ -68,7 +69,7 @@ class MemberController extends Controller
 
         $this->validate($request,[
             'name' => 'required',
-            'email' => 'required|unique:members,email',
+            'email' => 'required',
             'phone' => 'required',
             'designation' => 'required',
             'photo' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
@@ -103,18 +104,18 @@ class MemberController extends Controller
     }
 
     //Member Delete function
-    public function destroy($id){
+    public function destroy(Request $request){
 
         //photo unlink
-        $name = Member::findOrFail($id)->photo;
-        if($name != 'default.png'){
-            $old_photo_location = public_path('photo/members_photos/').$name;
+        $member = Member::where('id',$request->id)->first();
+
+        $old_photo_location = public_path('photo/members_photos/').$member->photo;
+        if (File::exists($old_photo_location)) {
             unlink($old_photo_location);
         }
-
         //Member delete
-        Member::findOrFail($id)->delete();
+        $member->delete();
 
-        return back()->with('delete_success', 'Member Delete Successfully');
+        return response()->json(['success'=>'Member deleted successfully!']);
     }
 }

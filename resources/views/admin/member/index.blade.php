@@ -97,7 +97,7 @@ All Members
 
 								<div class="modal-footer">
 									<button class="btn-sm btn-danger" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button class="btn-primary btn-sm" type="submit">Add User</button>
+									<button class="btn-primary btn-sm" type="submit">Add Member</button>
 									</form>
 								</div>
 							</div>
@@ -191,9 +191,10 @@ All Members
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberEdit{{ $member->id }}">
                                                 <span data-feather="edit"></span>
                                             </button>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$member->id}}">
-                                                <span data-feather="trash-2"></span>
+                                            <button type="button" class="btn btn-primary">
+                                                <a class="delete_member" id="{{$member['id']}}"> <span data-feather="trash-2"></span> </a>
                                             </button>
+
                                         </td>
 {{--                                        //edit model--}}
                                         <div class="modal  fade" id="memberEdit{{ $member->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -264,30 +265,6 @@ All Members
                                                 </div>
                                             </div>
                                         </div>
-{{--                                        //delete model--}}
-                                        <div class="modal fade" id="exampleModal{{$member->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <form action="{{route('admin.member.destroy',[$member->id])}}" method="POST">
-                                                        @csrf
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Delete!</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <h6>Do you Want to delete this Client?</h6>
-                                                            <p>Client won't be available!!</p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
 									</tr>
 
 									@empty
@@ -307,6 +284,34 @@ All Members
 </div>
 <!-- /Page Wrapper -->
 @section('admin.scripts')
-
+    <script>
+        $(document).on('click', '.delete_member', function () {
+            var id = $(this).attr("id");
+            Swal.fire({
+                title: 'Are you sure delete this Client?',
+                text: "You won't be able to revert this!",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        url:"{{route('admin.member.destroy')}}",
+                        method: 'POST',
+                        data: {id: id},
+                        success : function(data) {
+                            window.location.reload(true);
+                        }
+                    });
+                }
+            })
+        });
+    </script>
 @endsection
 
