@@ -6,53 +6,6 @@
     <div class="container">
         <div class="d-flex justify-content-center row">
             <div class="col-xl-10">
-                <div class="footer-feed">
-                    <div class="section-title style-four">
-                        <h2>FROM THE FEED</h2>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <img src="../../media/instagram/f1.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="../../media/instagram/f2.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="../../media/instagram/f3.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="../../media/instagram/f4.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="../../media/instagram/f5.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="../../media/instagram/f6.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="../../media/instagram/f7.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="../../media/instagram/f8.jpg" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
                 <div class="footer-three-bottom">
                     <div class="footer-three-left">
                         <a href="#">

@@ -25,11 +25,20 @@ Auth::routes(['register' => false, 'login' => false,]);
 //*** frontend route start ***//
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'],function(){
     Route::get('/','HomeController@index')->name('home');
-    Route::group(['namespace' => 'Auth', 'as' => 'account.'],function(){
-        Route::get('/account','AccountController@index')->name('login_register');
-    });
+    Route::get('/about','HomeController@about')->name('about');
+    Route::get('/weMourn','HomeController@weMourn')->name('weMourn');
+    Route::get('/rollNo','HomeController@rollNo')->name('rollNo');
+    Route::get('/memory','HomeController@memory')->name('memory');
+    Route::get('/rollNo/details/{id}','HomeController@rollNoDetails')->name('rollNoDetails');
 
 
+
+
+
+
+//    Route::group(['namespace' => 'Auth', 'as' => 'account.'],function(){
+//        Route::get('/account','AccountController@index')->name('login_register');
+//    });
 
 });
 
@@ -81,7 +90,7 @@ Route::group(['namespace' => 'Admin\Auth', 'prefix' => 'admin', 'as' => 'admin.'
                 Route::get('/','MemberController@index')->name('member');
                 Route::post('/store','MemberController@store')->name('member.store');
                 Route::post('/update/{id}','MemberController@update')->name('member.update');
-                Route::post('/destroy/{id}','MemberController@destroy')->name('member.destroy');
+                Route::post('/destroy','MemberController@destroy')->name('member.destroy');
 
             });
 
