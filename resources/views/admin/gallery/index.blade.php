@@ -43,7 +43,7 @@
                         </ul>
                         <a href="#" type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
 
-                            Add Member <i class="fas fa-plus"></i>
+                            Add Media <i class="fas fa-plus"></i>
                         </a>
                         <div class="modal  fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">

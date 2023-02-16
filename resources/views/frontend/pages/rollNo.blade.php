@@ -7,7 +7,7 @@
     <!--=        	Banner         =-->
     <!--============================-->
 
-    <section class="page-header" data-bg-image="{{ asset('frontend_asset/assets/photo') }}/media/background/8.jpg">
+    <section class="page-header" data-bg-image="{{ asset('frontend_asset/assets/photo') }}/media/background/15.jpg">
         <div class="tim-container">
             <div class="page-header-title text-center">
                 <h3>Love of Life</h3>
@@ -39,7 +39,7 @@
                                 <div class="album-info">
                                     <h4 class="album-title">{{$member->name}}</h4>
                                     <h5 class="artist-name">{{$member->designation}}</h5>
-                                    <a href="{{route('frontend.rollNoDetails',[$member->id])}}" class="tim-btn tim-btn-bgt">Details</a>
+                                    <a href="{{route('frontend.rollNoDetails',[$member->slug])}}" class="tim-btn tim-btn-bgt">Details</a>
                                 </div>
                             </div>
                         </li>

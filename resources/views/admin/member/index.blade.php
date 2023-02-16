@@ -172,6 +172,7 @@ All Members
 									<tr>
 
 										<th>Sl.</th>
+										<th>Photo</th>
 										<th>Name</th>
 										<th>phone</th>
 										<th>email</th>
@@ -192,6 +193,7 @@ All Members
                                             <img onerror="this.src='{{asset('admin_asset/assets/img/profiles/default_avator.png')}}'"
                                                      src="{{ asset('photo/members_photos') }}/{{ $member->photo }}" class="avatar-sm  me-2" alt="{{$member->name}}">
 										</td>
+										<td>{{ $member->name }}</td>
 										<td>{{ $member->phone }}</td>
 										<td>{{ $member->email }}</td>
 										<td>{{ $member->designation }}</td>

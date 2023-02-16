@@ -7,7 +7,7 @@
     <!--=        	Banner         =-->
     <!--============================-->
 
-    <section class="page-header" data-bg-image="{{ asset('frontend_asset/assets/photo') }}/media/background/8.jpg">
+    <section class="page-header" data-bg-image="{{ asset('frontend_asset/assets/photo') }}/media/background/15.jpg">
         <div class="tim-container">
             <div class="page-header-title text-center">
                 <h3>Love of Life</h3>
