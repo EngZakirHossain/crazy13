@@ -13,7 +13,6 @@
                 <h3>Crazy 13 </h3>
                 <h2>& Gallery</h2>
             </div>
-
         </div>
         <!-- /.tim-container -->
     </section>
