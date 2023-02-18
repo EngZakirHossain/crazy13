@@ -7,7 +7,7 @@
     <!--=        	Banner         =-->
     <!--============================-->
 
-    <section class="page-header event-header" data-bg-image="{{ asset('frontend_asset/assets/photo') }}/media/background/9.jpg">
+    <section class="page-header event-header" data-bg-image="{{ asset('frontend_asset/assets/photo') }}/media/background/15.jpg">
         <div class="tim-container">
             <div class="live-ticket-count">
                 <div class="countdown" data-count-year="2018" data-count-month="7" data-count-day="30">

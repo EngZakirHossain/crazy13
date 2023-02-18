@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use File;
 use App\Models\Member;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use File;
 
 class MemberController extends Controller
 {
@@ -18,6 +19,7 @@ class MemberController extends Controller
         if ($request->search != null) {
             $members = Member::where('name','LIKE', '%'.$request->search.'%')
                 ->orWhere('email','LIKE','%'.$request->search.'%')
+                ->latest()
                 ->get();
         }
         return view('admin.member.index')->with('members',$members);
@@ -41,6 +43,7 @@ class MemberController extends Controller
         //store in Member table(user information)
         $member = Member::create([
             'name' => $request->name,
+            'slug' => Str::slug($request->name) ,
             'email' => $request->email,
             'phone' => $request->phone,
             'live' => $request->live,
@@ -97,6 +100,7 @@ class MemberController extends Controller
 
         $member->update([
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
             'email' => $request->email,
             'phone' => $request->phone,
             'designation' => $request->designation,

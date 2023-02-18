@@ -15,10 +15,10 @@
                     </div>
                     <div class="footer-three-right">
                         <ul class="footer-three-menu">
-                            <li><a href="#">Rules</a></li>
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Tickets</a></li>
-                            <li><a href="#">policy</a></li>
+                            <li><a href="{{route('frontend.home')}}">Home</a></li>
+                            <li><a href="{{route('frontend.memory')}}">Gellery</a></li>
+                            <li><a href="{{route('frontend.rollNo')}}">We are 13</a></li>
+                            <li><a href="{{route('frontend.about')}}">About us</a></li>
                         </ul>
                         <div class="footer-social-three">
                             <ul>

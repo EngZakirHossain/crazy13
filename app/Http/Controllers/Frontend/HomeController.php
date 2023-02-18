@@ -26,8 +26,8 @@ class HomeController extends Controller
         $members = \App\Models\Member::all();
         return view('frontend.pages.rollNo',compact('members'));
     }
-    public function rollNoDetails($id){
-        $rollNoDetails = \App\Models\Member::findorFail($id);
+    public function rollNoDetails($slug){
+        $rollNoDetails = \App\Models\Member::whereSlug($slug)->first();
         return view('frontend.pages.rollNoDetails',compact('rollNoDetails'));
     }
 

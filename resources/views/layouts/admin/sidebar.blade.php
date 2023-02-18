@@ -24,7 +24,7 @@
                 <li class="@yield('members')">
                     <a href="#"><i data-feather="users"></i> <span> Members</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a class="@yield('add_members')" href="#">Add Members</a></li>
+                        {{-- <li><a class="@yield('add_members')" href="#">Add Members</a></li> --}}
                         @if (Auth::check())
                             @if (Auth::user()->role == 2)
                                 <li><a class="@yield('all_members')" href="{{ Route('admin.member') }}">All-Members</a></li>
