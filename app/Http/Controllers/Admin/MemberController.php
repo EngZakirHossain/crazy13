@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
@@ -22,8 +23,16 @@ class MemberController extends Controller
                 ->latest()
                 ->get();
         }
-        return view('admin.member.index')->with('members',$members);
+        return view('admin.member.index',compact('members'));
     }
+
+    //create user
+
+    public function create(){
+
+        return view('admin.member.create');
+    }
+
 
     //register new user function
     public function store(Request $request){
@@ -31,13 +40,15 @@ class MemberController extends Controller
 
         //validation rule
         $request->validate([
-            'name' => 'required',
-            'live' => 'required',
+            'name' => 'required|string|max:255',
+            'live' => 'required|numeric',
             'email' => 'required|unique:members,email',
             'phone' => 'required',
-            'photo' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
-            'designation' => 'required',
+            'photo' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'designation' => 'required|string',
+            'address' => 'required|string',
         ]);
+
 
 
         //store in Member table(user information)
@@ -48,6 +59,10 @@ class MemberController extends Controller
             'phone' => $request->phone,
             'live' => $request->live,
             'designation' => $request->designation,
+            'address' => $request->address,
+            'facebook_link' => $request->facebook_link,
+            'instagram_link' => $request->instagram_link,
+            'linkedin_link' => $request->linkedin_link,
             'status' => $request->status,
             'added_by' => Auth::user()->email,
             'created_at' => Carbon::now(),
@@ -64,24 +79,33 @@ class MemberController extends Controller
                 'photo' => $name,
             ]);
         }
-
-        return back()->with('member_added_success', 'Member Added Successfully');
+        Toastr::success('Data Created Successfully');
+        return redirect()->route('admin.members');
 
     }
+//edit member
+    public function edit($slug){
+
+        $member = Member::whereSlug($slug)->first();
+        return view('admin.member.edit',compact('member'));
+    }
+
+
 
     //member update function
-    public function update(Request $request, $id){
+    public function update(Request $request, $slug){
 
-        $this->validate($request,[
-            'name' => 'required',
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'live' => 'required|numeric',
             'email' => 'required',
             'phone' => 'required',
-            'live' => 'required',
-            'designation' => 'required',
-            'photo' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+            'photo' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'designation' => 'required|string',
+            'address' => 'required|string',
         ]);
 
-        $member = Member::find($id);
+        $member = Member::whereSlug($slug)->first();
 
         if($request->photo != ''){
             $path = ('photo/members_photos/');
@@ -99,16 +123,22 @@ class MemberController extends Controller
         }
 
         $member->update([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
+             'name' => $request->name,
+            'slug' => Str::slug($request->name) ,
             'email' => $request->email,
             'phone' => $request->phone,
+            'live' => $request->live,
             'designation' => $request->designation,
+            'address' => $request->address,
+            'facebook_link' => $request->facebook_link,
+            'instagram_link' => $request->instagram_link,
+            'linkedin_link' => $request->linkedin_link,
             'status' => $request->status,
             'live' => $request->live,
             'updated_by' => Auth::user()->email,
         ]);
-        return back()->with('update_success','Member Update Successfully');
+        Toastr::success('Data Updated Successfully');
+        return redirect()->route('admin.members');
     }
 
     //Member Delete function

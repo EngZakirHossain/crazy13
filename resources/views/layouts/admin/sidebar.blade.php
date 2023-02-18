@@ -8,13 +8,13 @@
                     <a href="{{ route('admin.home') }}"><i data-feather="home"></i> <span>Dashboard</span></a>
                 </li>
                 <li class="@yield('users')">
-                    <a href="#"><i data-feather="users"></i> <span> Users</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i data-feather="users"></i> <span> Users</span> <span
+                            class="menu-arrow"></span></a>
                     <ul>
                         <li><a class="@yield('profile')" href="{{ route('admin.profile') }}">Profile</a></li>
                         @if (Auth::check())
                             @if (Auth::user()->role == 2)
                                 <li><a class="@yield('all_users')" href="{{ Route('admin.user') }}">All-Users</a></li>
-
                             @endif
                         @endif
 
@@ -22,12 +22,13 @@
                 </li>
 
                 <li class="@yield('members')">
-                    <a href="#"><i data-feather="users"></i> <span> Members</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i data-feather="users"></i> <span> Members</span> <span
+                            class="menu-arrow"></span></a>
                     <ul>
-                        {{-- <li><a class="@yield('add_members')" href="#">Add Members</a></li> --}}
+                        <li><a class="@yield('add_members')" href="{{ route('admin.member.create') }}">Add Members</a></li>
                         @if (Auth::check())
                             @if (Auth::user()->role == 2)
-                                <li><a class="@yield('all_members')" href="{{ Route('admin.member') }}">All-Members</a></li>
+                                <li><a class="@yield('all_members')" href="{{ Route('admin.members') }}">All-Members</a></li>
                             @endif
                         @endif
 

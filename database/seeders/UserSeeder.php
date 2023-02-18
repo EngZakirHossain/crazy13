@@ -18,8 +18,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::insert([
-            'name' => 'Zakir Hossain',
-            'email' => 'zakir@gmail.com',
+            'name' => 'Super Admin',
+            'email' => 'admin@gmail.com',
             'role' => '2',
             'status' => '1',
             'photo' => 'default.png',

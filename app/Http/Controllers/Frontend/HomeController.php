@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Member;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
 
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class HomeController extends Controller
 {
@@ -19,21 +21,21 @@ class HomeController extends Controller
         return view('frontend.pages.about');
     }
     public function weMourn(){
-        $passedMembers = \App\Models\Member::where('live',2)->get();
+        $passedMembers = Member::where('live',2)->get();
         return view('frontend.pages.weMourn',compact('passedMembers'));
     }
     public function rollNo(){
-        $members = \App\Models\Member::all();
+        $members = Member::all();
         return view('frontend.pages.rollNo',compact('members'));
     }
     public function rollNoDetails($slug){
-        $rollNoDetails = \App\Models\Member::whereSlug($slug)->first();
+        $rollNoDetails = Member::whereSlug($slug)->first();
         return view('frontend.pages.rollNoDetails',compact('rollNoDetails'));
     }
 
     public function memory(){
 
-        $photos = \App\Models\Gallery::all();
+        $photos = Gallery::all();
         return view('frontend.pages.memory',compact('photos'));
     }
 

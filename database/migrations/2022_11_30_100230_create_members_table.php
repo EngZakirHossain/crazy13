@@ -20,9 +20,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('designation');
+            $table->string('address')->nullable();
+            $table->string('facebook_link')->nullable();
+            $table->string('instagram_link')->nullable();
+            $table->string('linkedin_link')->nullable();
             $table->string('photo')->default('default_avator.png');
             $table->string('status')->nullable();
-            $table->string('live')->nullable();
+            $table->string('live');
             $table->string('added_by')->nullable();
             $table->timestamp('edited_by')->nullable();
             $table->timestamps();

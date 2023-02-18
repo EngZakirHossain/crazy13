@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Jobs\VerifyUserJob;
-use App\Models\User;
-use App\VerifyUser;
-use Auth;
 use Carbon\Carbon;
-use Hash;
-use Illuminate\Http\Request;
+use App\VerifyUser;
+use App\Models\User;
+use App\Jobs\VerifyUserJob;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -83,11 +83,6 @@ class UserController extends Controller
 
         //     $user->notify(new NewAdminAdded($request->name));
         // }
-
-
-
-
-
         return back()->with('user_added_success', 'User Added Successfully');
 
 

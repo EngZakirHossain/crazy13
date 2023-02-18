@@ -87,9 +87,11 @@ Route::group(['namespace' => 'Admin\Auth', 'prefix' => 'admin', 'as' => 'admin.'
 
             //new Members add,store update in admin section
             Route::group(['prefix' => 'member'],function(){
-                Route::get('/','MemberController@index')->name('member');
+                Route::get('/','MemberController@index')->name('members');
+                Route::get('/create','MemberController@create')->name('member.create');
                 Route::post('/store','MemberController@store')->name('member.store');
-                Route::post('/update/{id}','MemberController@update')->name('member.update');
+                Route::post('/update/{slug}','MemberController@update')->name('member.update');
+                Route::get('/edit/{slug}','MemberController@edit')->name('member.edit');
                 Route::post('/destroy','MemberController@destroy')->name('member.destroy');
 
             });
